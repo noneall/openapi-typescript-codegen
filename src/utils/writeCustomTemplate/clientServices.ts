@@ -38,12 +38,12 @@ export const writeClientServicesCustomTemplate = async (
 
     const serviceTemplate = Handlebars.compile(await readFile(templatePath, 'utf8'));
 
-    const servicesDir = resolve(outputPath, 'services');
+    const servicesDir = resolve(outputPath, 'store');
     await remove(servicesDir);
     await mkdir(servicesDir);
 
     for (const service of client.services) {
-        const file = resolve(outputPath, `services/${service.name}${postfixServices}.ts`);
+        const file = resolve(outputPath, `store/${service.name}${postfixServices}.ts`);
         const templateResult = serviceTemplate({
             ...service,
             serviceBaseUrl: client.server,

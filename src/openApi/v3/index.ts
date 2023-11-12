@@ -13,8 +13,14 @@ import { getServiceVersion } from './parser/getServiceVersion';
 export const parse = (openApi: OpenApi): Client => {
     const version = getServiceVersion(openApi.info.version);
     const server = getServer(openApi);
-    const models = getModels(openApi);
-    const services = getServices(openApi);
+    const models = cleanDTO(getModels(openApi));
+    const services = cleanDTO(getServices(openApi));
 
     return { version, server, models, services };
 };
+
+function cleanDTO<T>(model: T) {
+    const str = JSON.stringify(model).replace(/DTO/g, 'Model');
+
+    return JSON.parse(str) as T;
+}

@@ -1,4 +1,5 @@
 import type { Operation } from '../../../client/interfaces/Operation';
+import { OperationParameter } from '../../../client/interfaces/OperationParameter';
 import type { OperationParameters } from '../../../client/interfaces/OperationParameters';
 import type { OpenApi } from '../interfaces/OpenApi';
 import type { OpenApiOperation } from '../interfaces/OpenApiOperation';
@@ -60,6 +61,10 @@ export const getOperation = (
         operation.parametersBody = parameters.parametersBody;
     }
 
+    if (operation.parametersPath?.length) {
+        operation.path = feedParamsToUrl(operation.path);
+    }
+
     if (op.requestBody) {
         const requestBodyDef = getRef<OpenApiRequestBody>(openApi, op.requestBody);
         const requestBody = getOperationRequestBody(openApi, requestBodyDef);
@@ -85,3 +90,7 @@ export const getOperation = (
 
     return operation;
 };
+
+function feedParamsToUrl(url: string) {
+    return url.replace(/{([^{}]*)}/g, (_match, p1) => `\${encodeURIComponent(options.pathParams!.${p1})}`);
+}

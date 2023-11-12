@@ -23,7 +23,7 @@ const params = program
     .option('--exportIndex <value>', 'Write Index to disk', true)
     .option('--exportSchemas <value>', 'Write schemas to disk', false)
     .option('--indent <value>', 'Indentation options [4, 2, tabs]', '4')
-    .option('--postfixServices <value>', 'Service name postfix', 'Service')
+    .option('--postfixServices <value>', 'Service name postfix', '')
     .option('--postfixModels <value>', 'Model name postfix')
     .option('--request <value>', 'Path to custom request file')
     .option('--serviceTemplate <value>', 'Path to custom service handlebars template to generate the service files')

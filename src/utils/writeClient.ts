@@ -56,7 +56,7 @@ export const writeClient = async (
     const outputPathCore = resolve(outputPath, 'core');
     const outputPathModels = resolve(outputPath, 'models');
     const outputPathSchemas = resolve(outputPath, 'schemas');
-    const outputPathServices = resolve(outputPath, 'services');
+    const outputPathServices = resolve(outputPath, 'store');
 
     if (!isSubDirectory(process.cwd(), output)) {
         throw new Error(`Output folder is not a subdirectory of the current working directory`);

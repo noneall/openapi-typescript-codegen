@@ -73,7 +73,7 @@ export const generate = async ({
     exportIndex = true,
     exportSchemas = false,
     indent = Indent.SPACE_4,
-    postfixServices = 'Service',
+    postfixServices = '',
     postfixModels = '',
     request,
     serviceTemplate,
