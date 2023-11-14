@@ -13,4 +13,6 @@ export const writeFile = __writeFile;
 export const copyFile = __copyFile;
 export const exists = __pathExists;
 export const mkdir = __mkdirp;
-export const rmdir = __remove;
+export const rmdir = async (path: string) => {
+    return Promise.resolve();
+};
