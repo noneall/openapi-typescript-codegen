@@ -1,11 +1,11 @@
-import { mkdir, readFile, remove } from 'fs-extra';
+import { readFile, remove } from 'fs-extra';
 import Handlebars from 'handlebars';
 import { resolve } from 'path';
 
 import { Client } from '../../client/interfaces/Client';
 import { HttpClient } from '../../HttpClient';
 import { Indent } from '../../Indent';
-import { writeFile } from '../fileSystem';
+import { mkdir, writeFile } from '../fileSystem';
 import { formatCode } from '../formatCode';
 import { formatIndentation } from '../formatIndentation';
 import { isDefined } from '../isDefined';
@@ -39,7 +39,7 @@ export const writeClientServicesCustomTemplate = async (
     const serviceTemplate = Handlebars.compile(await readFile(templatePath, 'utf8'));
 
     const servicesDir = resolve(outputPath, 'store');
-    await remove(servicesDir);
+    // await remove(servicesDir);
     await mkdir(servicesDir);
 
     for (const service of client.services) {
