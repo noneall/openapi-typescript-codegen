@@ -36,6 +36,8 @@ export const writeClientIndex = async (
     postfixModels: string,
     clientName?: string
 ): Promise<void> => {
+    const models = sortModelsByName(client.models);
+   
     const templateResult = templates.index({
         exportCore,
         exportServices,
@@ -47,7 +49,7 @@ export const writeClientIndex = async (
         clientName,
         server: client.server,
         version: client.version,
-        models: sortModelsByName(client.models),
+        models: models,
         services: sortServicesByName(client.services),
         exportClient: isDefined(clientName),
     });
