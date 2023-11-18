@@ -4,6 +4,8 @@
 {{~#equals @root.httpClient 'axios'}}Blob{{/equals~}}
 {{~#equals @root.httpClient 'angular'}}Blob{{/equals~}}
 {{~#equals @root.httpClient 'node'}}Blob{{/equals~}}
+{{~else equals format 'date-time'~}}
+Date
 {{~else~}}
 {{{base}}}
 {{~/equals~}}
