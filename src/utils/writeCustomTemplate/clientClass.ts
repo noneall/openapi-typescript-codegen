@@ -30,9 +30,6 @@ export const writeClientClassCustomTemplate = async (
         useOptions,
         handlebars: Handlebars, // since we're not using precompiled templates, we need a different object here
     });
-    Handlebars.registerHelper('capitalize', str => {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-    });
 
     const clientClassTemplate = Handlebars.compile(await readFile(templatePath, 'utf8'));
 

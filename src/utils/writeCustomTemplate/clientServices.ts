@@ -32,12 +32,6 @@ export const writeClientServicesCustomTemplate = async (
         useOptions,
         handlebars: Handlebars, // since we're not using precompiled templates, we need a different object here
     });
-    Handlebars.registerHelper('capitalize', str => {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-    });
-    Handlebars.registerHelper('lowercaseFirst', str => {
-        return str.charAt(0).toLowerCase() + str.slice(1);
-    });
 
     const serviceTemplate = Handlebars.compile(await readFile(templatePath, 'utf8'));
 

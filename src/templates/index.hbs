@@ -41,7 +41,7 @@ export { ${{{name}}} } from './schemas/${{{name}}}';
 {{#if services}}
 
 {{#each services}}
-export { actionCreators as {{{name}}}{{{@root.postfixServices}}}Actions } from './store/{{{name}}}{{{@root.postfixServices}}}';
+export { actionCreators as {{{lowercaseFirst name}}}{{{@root.postfixServices}}}Actions } from './store/{{{name}}}{{{@root.postfixServices}}}';
 {{/each}}
 {{/if}}
 {{/if}}

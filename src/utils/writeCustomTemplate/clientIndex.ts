@@ -36,9 +36,6 @@ export const writeClientIndexCustomTemplate = async (
         useOptions,
         handlebars: Handlebars, // since we're not using precompiled templates, we need a different object here
     });
-    Handlebars.registerHelper('capitalize', str => {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-    });
 
     const indexTemplate = Handlebars.compile(await readFile(templatePath, 'utf8'));
 

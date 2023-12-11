@@ -14,7 +14,7 @@ export const registerHandlebarHelpers = (root: {
     handlebars?: typeof HandlebarsRuntime;
 }): void => {
     const Handlebars = root.handlebars || HandlebarsRuntime;
-    
+
     Handlebars.registerHelper('ifdef', function (this: any, ...args): string {
         const options = args.pop();
         if (!args.every(value => !value)) {
@@ -106,5 +106,13 @@ export const registerHandlebarHelpers = (root: {
 
     Handlebars.registerHelper('camelCase', function (value: string): string {
         return camelCase(value);
+    });
+
+    Handlebars.registerHelper('lowercaseFirst', str => {
+        return str.charAt(0).toLowerCase() + str.slice(1);
+    });
+
+    Handlebars.registerHelper('capitalize', str => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
     });
 };
