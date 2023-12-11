@@ -9,5 +9,7 @@ export const postProcessService = (service: Service): Service => {
         clone.imports.push(...operation.imports);
     });
     clone.imports = postProcessServiceImports(clone);
+    clone.name = clone.name ? `${clone.name.charAt(0).toLowerCase()}${clone.name.slice(1)}` : clone.name;
+
     return clone;
 };
