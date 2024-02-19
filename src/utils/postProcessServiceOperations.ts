@@ -2,11 +2,22 @@ import type { Operation } from '../client/interfaces/Operation';
 import type { Service } from '../client/interfaces/Service';
 import { flatMap } from './flatMap';
 
+function removeServicenameAndLowercase(text: string, searchString: string) {
+    if (text.toLowerCase().startsWith(searchString.toLowerCase())) {
+        const modifiedText = text.slice(searchString.length);
+        const firstChar = modifiedText.charAt(0).toLowerCase();
+        return firstChar + modifiedText.slice(1);
+    }
+    return text;
+}
+
 export const postProcessServiceOperations = (service: Service): Operation[] => {
     const names = new Map<string, number>();
 
     return service.operations.map(operation => {
         const clone = { ...operation };
+
+        clone.name = removeServicenameAndLowercase(clone.name, service.name);
 
         // Parse the service parameters and results, very similar to how we parse
         // properties of models. These methods will extend the type if needed.
